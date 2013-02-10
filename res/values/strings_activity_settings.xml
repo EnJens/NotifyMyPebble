@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="title_activity_settings">NotifyMyPebble Settings</string>
+
+    <!-- Strings related to Settings -->
+    <string name="pref_header_general">General</string>
+    <string name="pref_description_notifications_enabled">Notifications enabled</string>
+    <string name="pref_title_notifications_enabled">Notifications</string>
+    
+    <string name="pref_title_minimum_notification_level">Minimum notification priority</string>
+    <string name="pref_description_minimum_notification_level">Set the minimum notification priority to forward to pebble</string>
+</resources>

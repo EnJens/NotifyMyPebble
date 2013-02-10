@@ -1,0 +1,18 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="notifications_enabled"
+        android:summary="@string/pref_description_notifications_enabled"
+        android:title="@string/pref_title_notifications_enabled" />
+    
+    <ListPreference
+        android:key="minimum_notification_level" 
+        android:defaultValue="-2"
+        android:entries="@array/notification_levels" 
+        android:entryValues="@array/notification_levels_values"
+        android:title="@string/pref_title_minimum_notification_level"
+        android:summary="@string/pref_description_minimum_notification_level"
+        android:dependency="notifications_enabled"/>
+
+</PreferenceScreen>

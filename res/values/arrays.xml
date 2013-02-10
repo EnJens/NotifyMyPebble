@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="notification_levels">
+        <item>Very Low (-2)</item>
+        <item>Moderate (-1)</item>
+        <item>Normal (0)</item>
+        <item>High (1)</item>
+        <item>Emergency (2)</item>
+    </string-array>
+    <string-array name="notification_levels_values">
+        <item>-2</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>
