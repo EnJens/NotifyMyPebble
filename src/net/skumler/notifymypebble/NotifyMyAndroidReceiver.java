@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 import org.json.*;
 import android.util.*;
+import android.text.Html;
+import android.text.Spanned;
 
 public class NotifyMyAndroidReceiver extends BroadcastReceiver {
 	private static final String TAG = "NotifyMyPebble";
@@ -26,11 +28,10 @@ public class NotifyMyAndroidReceiver extends BroadcastReceiver {
 		String minimum_prio_str = PreferenceManager.getDefaultSharedPreferences(context).getString("minimum_notification_level", "-2");
 		int minimum_prio = Integer.parseInt(minimum_prio_str);
 		
-		@SuppressWarnings("unused")
 		String title = intent.getStringExtra("title");
 		
-		String event = intent.getStringExtra("event");
-		String desc = intent.getStringExtra("desc");
+		String event = getHtmlStringSafe(intent.getStringExtra("event"));
+		String desc = getHtmlStringSafe(intent.getStringExtra("desc"));
 		int priority = intent.getIntExtra("prio", 0);
 		
 		if(priority < minimum_prio)
@@ -51,5 +52,17 @@ public class NotifyMyAndroidReceiver extends BroadcastReceiver {
 		pebbleIntent.putExtra("notificationData", notificationData);
 		
 	    context.sendBroadcast(pebbleIntent);
+	}
+
+	private String getHtmlStringSafe(String stringExtra) {
+		 try
+		 {
+			 Spanned html = Html.fromHtml(stringExtra);
+			 return html.toString();
+		 } catch(Exception ex)
+		 {
+			 Log.w(TAG, "Invalid string received. Return empty string");
+			 return "";
+		 }
 	}
 }
