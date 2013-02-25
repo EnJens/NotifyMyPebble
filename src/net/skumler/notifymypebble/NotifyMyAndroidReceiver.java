@@ -57,12 +57,15 @@ public class NotifyMyAndroidReceiver extends BroadcastReceiver {
 	private String getHtmlStringSafe(String stringExtra) {
 		 try
 		 {
+			 // If empty string, don't try to parse it as html.
+			 if(stringExtra == null || stringExtra == "")
+				 return "";
 			 Spanned html = Html.fromHtml(stringExtra);
 			 return html.toString();
 		 } catch(Exception ex)
 		 {
-			 Log.w(TAG, "Invalid string received. Return empty string");
-			 return "";
+			 Log.w(TAG, "Invalid string received. Returning error.", ex);
+			 return "Couldn't parse string!";
 		 }
 	}
 }
